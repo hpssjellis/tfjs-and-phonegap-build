@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.rocksetta.tensorflowjs-tutorial"
+    id          = "com.rocksetta.tfjs-and-phonegap-build"
     versionCode = "10"
     version     = "1.02.04" >      <!-- Change this before each compile -->
 
-  <name>Tensorflowjs Tutorial</name>
+  <name>Tensorflowjs test Local Model Loading in Phonegap Build</name>
   <description>
       Tensorflowjs in an Android App
   </description>
