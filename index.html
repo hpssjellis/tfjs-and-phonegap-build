@@ -138,3 +138,23 @@ function gotFile(fileEntry) {
 
 
 
+
+
+<input type=button value="load Text File using fetch" onclick="{
+
+myLoadData = async function(myInFile){
+ const myFileName = myInFile
+ if (myFileName != null){  
+   const myData = await fetch(myFileName)
+   document.getElementById('myDiv12').value = await myData.text() 
+ }                                                                           
+}
+
+myLoadData('index.html')						   
+
+}"><br>
+
+
+<div id='myDiv12'>...</div><br>
+
+
