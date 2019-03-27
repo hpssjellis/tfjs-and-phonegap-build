@@ -128,7 +128,7 @@ function gotFile(fileEntry) {
 
 } 
 						   
-   window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + 'index.html', gotFile, fail);
+   window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + 'www/index.html', gotFile, fail);
 
 						   
 }">
@@ -146,7 +146,7 @@ myLoadData = async function(myInFile){
  const myFileName = myInFile
  if (myFileName != null){  
    const myData = await fetch(myFileName)
-   document.getElementById('myDiv12').value = await myData.text() 
+   document.getElementById('myDiv12').innerHTML = await myData.text() 
  }                                                                           
 }
 
