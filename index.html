@@ -64,6 +64,7 @@ Data Shape <input id="myInShape" type=text value="4,2"><br>
  function fail(e) {
 	console.log('FileSystem Error');
 	console.dir(e);
+	document.getElementById('myDiv4334').innerHTML += 'FileSystem Error' + e
 }
 
 function gotFile(fileEntry) {
@@ -73,7 +74,7 @@ function gotFile(fileEntry) {
 
 		reader.onloadend = function(e) {
 			console.log('Text is: '+this.result);
-			document.querySelector('#textArea').innerHTML = this.result;
+			document.getElementById('myDiv4334').innerHTML = this.result;
 		}
 
 		reader.readAsText(file);
@@ -86,7 +87,7 @@ function gotFile(fileEntry) {
 						   
 }">
 
-<textarea id="textArea"></textarea>
+<div id='myDiv4334'>...</div><br>
 
 
 
