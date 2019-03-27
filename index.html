@@ -61,7 +61,28 @@ Data Shape <input id="myInShape" type=text value="4,2"><br>
 
 <input type=button value="load Text File" onclick="{
 
-   alert()
+ function fail(e) {
+	console.log("FileSystem Error");
+	console.dir(e);
+}
+
+function gotFile(fileEntry) {
+
+	fileEntry.file(function(file) {
+		var reader = new FileReader();
+
+		reader.onloadend = function(e) {
+			console.log("Text is: "+this.result);
+			document.querySelector("#textArea").innerHTML = this.result;
+		}
+
+		reader.readAsText(file);
+	});
+
+} 
+						   
+   window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + "www/index.html", gotFile, fail);
+
 						   
 }">
 
