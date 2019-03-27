@@ -1,0 +1,159 @@
+
+
+<h2 align=center>Testing tensorflowjs model loading in phonegap build</h2>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0"> </script> 
+
+ 
+
+
+
+
+<div id='myDiv222'>...</div><br><br>
+
+<script>
+ 
+let myDebug = false 
+
+var isPhoneGapWebView = location.href.match(/^file:/); // returns true for PhoneGap app
+ if (isPhoneGapWebView){
+  document.getElementById('myDiv222').innerHTML = '<h1>I am a phonegap build app</h1>'
+	 
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+
+  // myPhonegap()
+   //restart()
+
+	
+  document.getElementById('myDiv222').innerHTML += 'Device Ready'	
+
+} 	 
+	 
+	 
+	 
+} else{
+ document.getElementById('myDiv222').innerHTML = '<h1>I am in a web browser</h1>'
+}   
+
+  
+
+ 
+ 
+ 
+  
+</script>  
+
+
+
+
+
+
+
+
+
+Using the xOr model from <a href="https://hpssjellis.github.io/beginner-tensorflowjs-examples-in-javascript/beginner-keras/20keras-xOr.html">20keras-xOr.htm</a><br>
+Expecting values near 0, 1, 1, 0<br><br>
+LOAD URL <input id="myInFile" type="text" size="120" value="https://www.rocksetta.com/tensorflowjs/saved-models/batches-20000-done.json"><br>  
+
+<!--	
+Test Data:<textarea id="myInData" rows=6 cols=60 wrap=false>0,0,
+0,1,
+1,0,
+1,1</textarea><br>
+Data Shape <input id="myInShape" type=text value="4,2"><br>
+-->
+ 
+<input id="myButton4950" type="button" value="Load everything from a URL and test the data" onclick="{
+
+  const startTime = performance.now();
+  document.getElementById('myDiv4950').innerHTML = '<br>'
+  document.getElementById('myButton4950').style.backgroundColor = 'red'  
+                                                                                                                                                        
+  async function myGo6() {
+			
+    const loadedModel6 = await	 tf.loadLayersModel(document.getElementById('myInFile').value)
+    const training_data6 = tf.tensor2d([[0,0],[0,1],[1,0],[1,1]]);  												    
+												    
+    //const training_data6 = tf.tensor2d(document.getElementById('myInData').value.split(','),document.getElementById('myInShape').value.split(','));  
+   // training_data6.print(true)
+   // console.log(document.getElementById('myInData').value.split(','))	
+   // console.log(document.getElementById('myInShape').value.split(','))										    
+												    
+												    
+    const myPredictArray6 = await loadedModel6.predict(training_data6).data()
+
+    document.getElementById('myDiv4950').innerHTML += '[0,0] = ' + myPredictArray6[0].toFixed(4) +'<br>'
+    document.getElementById('myDiv4950').innerHTML += '[1,0] = ' + myPredictArray6[1].toFixed(4) +'<br>'
+    document.getElementById('myDiv4950').innerHTML += '[0,1] = ' + myPredictArray6[2].toFixed(4) +'<br>'
+    document.getElementById('myDiv4950').innerHTML += '[1,1] = ' + myPredictArray6[3].toFixed(4) +'<br>'
+
+    const endTime = performance.now();
+    document.getElementById('myDiv4950').innerHTML += 'Duration ' + (endTime-startTime).toFixed(4) +'ms <br>'												  
+    document.getElementById('myButton4950').style.backgroundColor = 'lightgrey'                    
+  }
+
+  setTimeout(function(){  myGo6() }, 10);   // wait a bit for the GUI to update	
+}" style="background-color: lightgrey;">
+	
+	
+	<br><br>
+
+<div id='myDiv4950'>...</div><br>
+
+
+
+
+
+<input type=button value="load Text File" onclick="{
+
+ function fail(e) {
+	console.log('FileSystem Error');
+	console.dir(e);
+	document.getElementById('myDiv4334').innerHTML += 'FileSystem Error' + e
+}
+
+function gotFile(fileEntry) {
+
+	fileEntry.file(function(file) {
+		var reader = new FileReader();
+
+		reader.onloadend = function(e) {
+			console.log('Text is: '+this.result);
+			document.getElementById('myDiv4334').innerHTML = this.result;
+		}
+
+		reader.readAsText(file);
+	});
+
+} 
+						   
+   window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + 'www/index.html', gotFile, fail);
+
+						   
+}">
+
+<div id='myDiv4334'>...</div><br>
+
+
+
+
+
+
+<input type=button value="load Text File using fetch" onclick="{
+
+myLoadData = async function(myInFile){
+ const myFileName = myInFile
+ if (myFileName != null){  
+   const myData = await fetch(myFileName)
+   document.getElementById('myDiv12').innerHTML = await myData.text() 
+ }                                                                           
+}
+
+myLoadData('index.html')						   
+
+}"><br>
+
+
+<div id='myDiv12'>...</div><br>
+
