@@ -13,18 +13,21 @@ let myDebug = false
 
 var isPhoneGapWebView = location.href.match(/^file:/); // returns true for PhoneGap app
   
-if (isPhoneGapWebView){
+
+  
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+
+  // myPhonegap()
+   //restart()
+ if (isPhoneGapWebView){
   document.getElementById('myDiv222').innerHTML = '<h1>I am a phonegap build app</h1>'
 } else{
  document.getElementById('myDiv222').innerHTML = '<h1>I am in a web browser</h1>'
 } 
-  
-document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-  document.getElementById('myDiv222').innerHTML += 'Device Ready'
-  // myPhonegap()
-   //restart()
- 
+	
+  document.getElementById('myDiv222').innerHTML += 'Device Ready'	
+	
  /*
  var script = document.createElement('script');
 script.src = 'cordova.js';
