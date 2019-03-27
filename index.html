@@ -105,7 +105,7 @@ Data Shape <input id="myInShape" type=text value="4,2"><br>
 
 Try some locations <input id="myInText" type=text value="mytext01.txt"><br>
 
-<input type=button value="load Text File" onclick="{
+<input type=button value="load Text File for PG build" onclick="{
 
  function fail(e) {
 	console.log('FileSystem Error');
@@ -140,7 +140,7 @@ function gotFile(fileEntry) {
 
 
 
-<input type=button value="load Text File using fetch" onclick="{
+<input type=button value="load Text File using fetch for browser" onclick="{
 
 myLoadData = async function(myInFile){
  const myFileName = myInFile
@@ -158,3 +158,19 @@ myLoadData(document.getElementById('myInText').value)
 <div id='myDiv12'>...</div><br>
 
 
+<input type=button value="load Text File using fetchPolyfill for browser" onclick="{
+
+myLoadData = async function(myInFile){
+ const myFileName = myInFile
+ if (myFileName != null){  
+   const myData = await fetchPolyfill(myFileName)
+   document.getElementById('myDiv12a').innerHTML = await myData.text() 
+ }                                                                           
+}
+
+myLoadData(document.getElementById('myInText').value)						   
+
+}"><br>
+
+
+<div id='myDiv12a'>...</div><br>
