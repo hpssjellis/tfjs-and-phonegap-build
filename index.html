@@ -14,16 +14,16 @@ let myDebug = false
 var isPhoneGapWebView = location.href.match(/^file:/); // returns true for PhoneGap app
   
 if (isPhoneGapWebView){
-   document.writeln('<h1>I am cordova</h1>')
+  document.getElementById('myDiv222').innerHTML = '<h1>I am a phonegap build app</h1>'
 } else{
- / document.writeln('<h1>I am a web browser</h1>')
+ document.getElementById('myDiv222').innerHTML = '<h1>I am in a web browser</h1>'
 } 
   
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
- 
-   myPhonegap()
-   restart()
+  document.getElementById('myDiv222').innerHTML += 'Device Ready'
+  // myPhonegap()
+   //restart()
  
  /*
  var script = document.createElement('script');
@@ -47,7 +47,7 @@ document.head.appendChild(script);
 
 
 
-
+<div id='myDiv222'>...</div><br><br>
 
 
 Using the xOr model from <a href="https://hpssjellis.github.io/beginner-tensorflowjs-examples-in-javascript/beginner-keras/20keras-xOr.html">20keras-xOr.htm</a><br>
