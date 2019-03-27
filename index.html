@@ -159,11 +159,11 @@ myLoadData(document.getElementById('myInText').value)
 
 
 <input type=button value="load Text File using fetchPolyfill for browser" onclick="{
-
+window.fetch = fetchPolyfill;
 myLoadData = async function(myInFile){
  const myFileName = myInFile
  if (myFileName != null){  
-   const myData = await fetchPolyfill(myFileName)
+   const myData = await fetch(myFileName)
    document.getElementById('myDiv12a').innerHTML = await myData.text() 
  }                                                                           
 }
