@@ -34,7 +34,10 @@
 
   <preference name="android-installLocation" value="auto" />
   
-  <gap:plugin name="org.apache.cordova.file" source="npm"/> 
+
+
+    <gap:plugin name="org.apache.cordova.file" source="npm" />
+   
 
   
 
