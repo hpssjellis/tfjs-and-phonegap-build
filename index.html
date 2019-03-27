@@ -73,7 +73,7 @@ function gotFile(fileEntry) {
 
 		reader.onloadend = function(e) {
 			console.log('Text is: '+this.result);
-			document.querySelector("#textArea").innerHTML = this.result;
+			document.querySelector('#textArea').innerHTML = this.result;
 		}
 
 		reader.readAsText(file);
@@ -86,7 +86,7 @@ function gotFile(fileEntry) {
 						   
 }">
 
-
+<textarea id="textArea"></textarea>
 
 
 
