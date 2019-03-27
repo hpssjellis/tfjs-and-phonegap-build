@@ -103,7 +103,7 @@ Data Shape <input id="myInShape" type=text value="4,2"><br>
 
 
 
-
+Try some locations <input if="myInText" type=text value="mytext01.txt"><br>
 
 <input type=button value="load Text File" onclick="{
 
@@ -128,7 +128,7 @@ function gotFile(fileEntry) {
 
 } 
 						   
-   window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + 'www/index.html', gotFile, fail);
+   window.resolveLocalFileSystemURL(cordova.file.applicationDirectory + document.getElementById('myInText').value, gotFile, fail);
 
 						   
 }">
@@ -150,7 +150,7 @@ myLoadData = async function(myInFile){
  }                                                                           
 }
 
-myLoadData('index.html')						   
+myLoadData(document.getElementById('myInText').value)						   
 
 }"><br>
 
